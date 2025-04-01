@@ -35,6 +35,22 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: rgb(2, 0, 15); }
+
+
+
+
+
+
+
+
+
+
         .search-section {
             padding: 2rem;
             background: var(--background-light);
@@ -379,14 +395,36 @@
 
         <section class="search-section">
             <div class="search-container">
-                <form class="search-form">
-                    <input type="text" class="search-input" placeholder="Search for health topics, articles, or tips...">
+                <form class="search-form" onsubmit="searchArticle(event)">
+                    <input type="text" id="search-input" class="search-input" placeholder="Search for health topics, articles, or tips...">
                     <button type="submit" class="search-btn">
                         <i class="fas fa-search"></i> Search
                     </button>
                 </form>
             </div>
         </section>
+        
+        <script>
+            function searchArticle(event) {
+                event.preventDefault(); // Prevent the form from submitting normally
+                
+                let query = document.getElementById("search-input").value.trim().toLowerCase();
+                
+                // Define article pages based on search queries
+                let articles = {
+                    "heart": "heart-health.html",
+                    "diabetes": "diabetes-care.html",
+                    "nutrition": "nutrition-guide.html"
+                };
+        
+                if (articles[query]) {
+                    window.location.href = articles[query]; // Redirect to the corresponding article
+                } else {
+                    alert("No articles found for: " + query);
+                }
+            }
+        </script>
+        
 
         <section class="categories-section">
             <div class="categories-container">
@@ -397,20 +435,22 @@
                 <div class="categories-grid">
                     <div class="category-card">
                         <div class="category-image">
-                            <img src="images/mental-health.jpg" alt="Mental Health">
+                            <img src="./images/mh2.jpg" alt="Mental Health">
                         </div>
                         <div class="category-content">
                             <h3>Mental Health</h3>
                             <p>Resources for stress management, anxiety, depression, and emotional well-being.</p>
-                            <a href="#" class="category-link">
+                            <a href="mental-health.html" class="category-link">
                                 Explore <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
-
+                </div>
+                <br>
+<br>
                     <div class="category-card">
                         <div class="category-image">
-                            <img src="images/physical-health.jpg" alt="Physical Health">
+                            <img src="images/p12.jpg" alt="Physical Health">
                         </div>
                         <div class="category-content">
                             <h3>Physical Health</h3>
@@ -421,9 +461,12 @@
                         </div>
                     </div>
 
+                <br>
+                <br>
+
                     <div class="category-card">
                         <div class="category-image">
-                            <img src="images/nutrition.jpg" alt="Nutrition">
+                            <img src="images/n1.jpg" alt="Nutrition">
                         </div>
                         <div class="category-content">
                             <h3>Nutrition</h3>
@@ -433,10 +476,11 @@
                             </a>
                         </div>
                     </div>
-
+<br>
+<br>
                     <div class="category-card">
                         <div class="category-image">
-                            <img src="images/fitness.jpg" alt="Fitness">
+                            <img src="images/f13.png" alt="Fitness">
                         </div>
                         <div class="category-content">
                             <h3>Fitness</h3>
@@ -459,11 +503,11 @@
                 <div class="articles-grid">
                     <div class="article-card">
                         <div class="article-image">
-                            <img src="images/article1.jpg" alt="Stress Management">
+                            <img src="images/s1.jpg" alt="Stress Management">
                         </div>
                         <div class="article-content">
                             <div class="article-meta">
-                                <span><i class="far fa-calendar"></i> March 15, 2024</span>
+                                <span><i class="far fa-calendar"></i> March 15, 2025</span>
                                 <span><i class="far fa-clock"></i> 5 min read</span>
                             </div>
                             <h3>Effective Stress Management Techniques</h3>
@@ -476,28 +520,29 @@
 
                     <div class="article-card">
                         <div class="article-image">
-                            <img src="images/article2.jpg" alt="Healthy Eating">
+                            <img src="images/d11.jpg" alt="Healthy Eating">
                         </div>
                         <div class="article-content">
                             <div class="article-meta">
-                                <span><i class="far fa-calendar"></i> March 14, 2024</span>
+                                <span><i class="far fa-calendar"></i> March 14, 2025</span>
                                 <span><i class="far fa-clock"></i> 4 min read</span>
                             </div>
                             <h3>Building a Balanced Diet</h3>
                             <p>Discover the key components of a healthy diet and how to maintain it.</p>
-                            <a href="#" class="read-more">
+                            <a a href="diet.html" class="read-more">
                                 Read More <i class="fas fa-arrow-right"></i>
+                                
                             </a>
                         </div>
                     </div>
 
                     <div class="article-card">
                         <div class="article-image">
-                            <img src="images/article3.jpg" alt="Exercise Tips">
+                            <img src="images/h11.jpg" alt="Exercise Tips">
                         </div>
                         <div class="article-content">
                             <div class="article-meta">
-                                <span><i class="far fa-calendar"></i> March 13, 2024</span>
+                                <span><i class="far fa-calendar"></i> March 13, 2025</span>
                                 <span><i class="far fa-clock"></i> 6 min read</span>
                             </div>
                             <h3>Home Workout Guide</h3>
@@ -561,7 +606,7 @@
             <div class="footer-bottom">
                 <div class="footer-logo">
                     <img src="images/logo.png" alt="HealthConnect Logo">
-                    <p>&copy; 2024 HealthConnect. All rights reserved.</p>
+                    <p>&copy; 2025 HealthConnect. All rights reserved.</p>
                 </div>
                 <div class="footer-links">
                     <a href="#">Terms & Conditions</a>

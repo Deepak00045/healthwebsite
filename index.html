@@ -2,16 +2,81 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HealthGuard- Your Healthcare Partner</title>
-    <link rel="stylesheet" href="health.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="health.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <script src="config.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=" + API_KEY + "&callback=initMap" async defer></script>
-    
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+
     <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #0d47a1;
+            --accent-color: #d50000;
+            --background-light: #f5f5f5;
+            --light-text: #666;
+            --shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background-light);
+            color: #333;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+        }
+
+        /* Header */
+        .main-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .main-header .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .main-header .logo img {
+            height: 40px;
+        }
+        .navbar {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+        .navbar li a {
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .navbar li a:hover {
+            color: var(--secondary-color);
+        }
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(26, 35, 126, 0.8), rgba(13, 71, 161, 0.8)), url('images/hero-bg.jpg');
@@ -23,33 +88,31 @@
             text-align: center;
             color: white;
             padding: 0 2rem;
+            animation: heroFadeIn 1s ease-out forwards;
         }
-
+        @keyframes heroFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
         .hero-content {
             max-width: 800px;
         }
-
         .hero-content h1 {
             font-size: 4rem;
             margin-bottom: 1.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            color: rgb(2, 0, 15);  
-
+            color: rgb(2, 0, 15);
         }
-
         .hero-content p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            
         }
-
         .hero-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
         }
-
         .btn {
             padding: 1rem 2rem;
             border-radius: 30px;
@@ -60,23 +123,72 @@
             align-items: center;
             gap: 0.5rem;
         }
-
         .btn-primary {
             background: var(--accent-color);
             color: white;
         }
-
         .btn-secondary {
             background: transparent;
             color: white;
             border: 2px solid white;
         }
-
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
+        /* About Health Connect Section */
+        .about {
+            padding: 4rem 2rem;
+            background: white;
+            animation: fadeIn 1s ease-out forwards;
+        }
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        .about-content p {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #000000;
+        }
+        .about-content ul {
+            list-style: none;
+            text-align: left;
+            max-width: 500px;
+            margin: 0.5rem auto 1.5rem;
+            padding-left: 1rem;
+            color: #000000;
+        }
+        .about-content ul li {
+            font-size: 1rem;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: #000000;
+        }
+        .about-content ul li::before {
+            content: '✔';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Search Section */
         .search-section {
             padding: 3rem 2rem;
             background: white;
@@ -84,7 +196,6 @@
             position: relative;
             z-index: 1;
         }
-
         .search-container {
             max-width: 800px;
             margin: 0 auto;
@@ -93,13 +204,11 @@
             border-radius: 15px;
             box-shadow: var(--shadow);
         }
-
         .search-box {
             display: flex;
             gap: 1rem;
             margin-bottom: 1rem;
         }
-
         .search-input {
             flex: 1;
             padding: 1rem;
@@ -107,12 +216,10 @@
             border-radius: 8px;
             font-size: 1rem;
         }
-
         .search-input:focus {
             outline: none;
             border-color: var(--primary-color);
         }
-
         .search-btn {
             padding: 1rem 2rem;
             background: var(--primary-color);
@@ -122,17 +229,16 @@
             cursor: pointer;
             transition: var(--transition);
         }
-
         .search-btn:hover {
             background: var(--secondary-color);
             transform: translateY(-2px);
         }
 
+        /* Quick Access Section */
         .quick-access {
             padding: 5rem 2rem;
             background: var(--background-light);
         }
-
         .quick-access-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -140,7 +246,6 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .quick-access-card {
             background: white;
             padding: 2rem;
@@ -149,33 +254,40 @@
             transition: var(--transition);
             box-shadow: var(--shadow);
         }
-
         .quick-access-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
-
         .quick-access-card i {
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 1rem;
         }
-
         .quick-access-card h3 {
             margin-bottom: 1rem;
             color: var(--primary-color);
         }
-
         .quick-access-card p {
             color: var(--light-text);
             margin-bottom: 1.5rem;
         }
+        .quick-access-card .btn {
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 5px;
+            background: var(--primary-color);
+            color: white;
+            transition: var(--transition);
+        }
+        .quick-access-card .btn:hover {
+            background: var(--secondary-color);
+        }
 
+        /* Features Section */
         .features-section {
             padding: 5rem 2rem;
             background: white;
         }
-
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -183,28 +295,25 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .feature-card {
             text-align: center;
             padding: 2rem;
         }
-
         .feature-card i {
             font-size: 3rem;
             color: var(--primary-color);
             margin-bottom: 1.5rem;
         }
-
         .feature-card h3 {
             margin-bottom: 1rem;
             color: var(--primary-color);
         }
-
         .feature-card p {
             color: var(--light-text);
             line-height: 1.6;
         }
 
+        /* Emergency Section */
         .emergency-section {
             padding: 5rem 2rem;
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/emergency-bg.jpg');
@@ -213,22 +322,18 @@
             color: white;
             text-align: center;
         }
-
         .emergency-content {
             max-width: 800px;
             margin: 0 auto;
         }
-
         .emergency-content h2 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
         }
-
         .emergency-content p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
         }
-
         .emergency-btn {
             display: inline-block;
             padding: 1rem 2.5rem;
@@ -240,35 +345,124 @@
             transition: var(--transition);
             border: 2px solid transparent;
         }
-
         .emergency-btn:hover {
             background: transparent;
             border-color: white;
             transform: translateY(-3px);
         }
 
+        /* Footer */
+        .footer {
+            background: #222;
+            color: #ccc;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            width: 100%;
+            justify-content: space-around;
+        }
+        .footer-section h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+            color: #ccc;
+        }
+        .footer-section ul li a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+        .footer-section ul li a:hover {
+            color: var(--primary-color);
+        }
+        .footer-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+        }
+        .footer-logo img {
+            height: 40px;
+        }
+        .footer-links {
+            text-align: center;
+        }
+        .footer-links a {
+            color: #ccc;
+            margin: 0 0.5rem;
+            transition: var(--transition);
+        }
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 0.75rem;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
             .hero-content h1 {
                 font-size: 2.5rem;
             }
-
             .hero-buttons {
                 flex-direction: column;
             }
-
             .search-box {
                 flex-direction: column;
             }
-
             .search-btn {
                 width: 100%;
+            }
+            .main-header {
+                flex-direction: column;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .mobile-nav-toggle {
+                display: block;
             }
         }
     </style>
 </head>
 
 <body>
-    
     <header class="main-header">
         <div class="logo">
             <img src="images/logo.png" alt="HealthConnect Logo">
@@ -282,7 +476,6 @@
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="Doctor.html"><i class="fas fa-user-md"></i> Nature Nest</a></li>
                 <li><a href="Self-Care Resources.html"><i class="fas fa-heart"></i> Self-Care Resources</a></li>
-
                 <li><a href="Find Healthcare.html"><i class="fas fa-search"></i> Find Healthcare</a></li>
                 <li><a href="About us.html"><i class="fas fa-info-circle"></i> About Us</a></li>
                 <li><a href="Contact us.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
@@ -291,89 +484,57 @@
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
-                <h1 >Your Health, Our Priority</h1>
-                <p>Access quality healthcare  anytime, anywhere. Connect with healthcare providers and take control of your well-being.</p>
+                <h1>Your Health, Our Priority</h1>
+                <p>Access quality healthcare anytime, anywhere. Connect with healthcare providers and take control of your well-being.</p>
                 <div class="hero-buttons">
-                    <a href=" Self-Care Resources.html" class="btn btn-primary">
+                    <a href="Self-Care Resources.html" class="btn btn-primary">
                         <i class="fas fa-search"></i> Self-Care Resources
                     </a>
                     <a href="Doctor.html" class="btn btn-secondary">
-                        <i class="fas fa-user-md"></i>  Nature Nest
+                        <i class="fas fa-user-md"></i> Nature Nest
                     </a>
                 </div>
             </div>
         </section>
 
-        <section class="search-section">
-            <div class="search-container">
-                <h2>Find Healthcare Services Near You</h2>
-                <div class="search-box">
-                    <input type="text" class="search-input" placeholder="Enter your location or service type">
-                    <button class="search-btn">
-                        <i class="fas fa-search"></i> Search
-                    </button>
-                </div>
+        <!-- About Health Connect Section -->
+        <section class="about">
+            <div class="about-content">
+                <h2>Health Connect – Your Smart Health Companion</h2>
+                <p>
+                    In today’s fast-paced world, people struggle to access reliable health information, find trusted medical professionals, and adopt preventive healthcare practices. Many lack quick access to home remedies, nearby hospitals, and specialist doctors—leading to delays in treatment and poor health management. The overwhelming amount of health-related content online makes it difficult to find credible and personalized guidance on maintaining a healthy lifestyle.
+                </p>
+                <p>
+                    Health Connect aims to solve this by providing a one-stop digital health platform that offers:
+                </p>
+                <ul>
+                    <li>Verified home remedies for minor health concerns</li>
+                    <li>Nearby hospital & specialist search for quick medical assistance</li>
+                    <li>Latest health articles & wellness tips for informed decision-making</li>
+                    <li>Personalized health maintenance guidance</li>
+                </ul>
+                <p>
+                    By integrating these features, Health Connect empowers you to take charge of your health—anytime, anywhere. Stay healthy, stay connected!
+                </p>
             </div>
         </section>
 
-        <section class="quick-access">
-            <div class="quick-access-grid">
-                <div class="quick-access-card">
-                    <i class="fas fa-user-md"></i>
-                    <h3>Find a Doctor</h3>
-                    <p>Connect with qualified healthcare professionals in your area</p>
-                    <a href="Doctor.html" class="btn btn-primary">Find Doctor</a>
-                </div>
-                <div class="quick-access-card">
-                    <i class="fas fa-hospital"></i>
-                    <h3>Locate Hospitals</h3>
-                    <p>Find nearby hospitals and emergency care centers</p>
-                    <a href="Find Healthcare.html" class="btn btn-primary">Find Hospitals</a>
-                </div>
-                <div class="quick-access-card">
-                    <i class="fas fa-pills"></i>
-                    <h3>Pharmacy</h3>
-                    <p>Locate pharmacies and order medications online</p>
-                    <a href="Find Healthcare.html" class="btn btn-primary">Find Pharmacy</a>
-                </div>
-                <div class="quick-access-card">
-                    <i class="fas fa-heart"></i>
-                    <h3>Health Tips</h3>
-                    <p>Access valuable health information and self-care resources</p>
-                    <a href="Self-Care Resources.html" class="btn btn-primary">View Resources</a>
-                </div>
-            </div>
-        </section>
-
+        <!-- Features Section -->
         <section class="features-section">
             <div class="features-grid">
                 <div class="feature-card">
                     <i class="fas fa-clock"></i>
                     <h3>24/7 Access</h3>
-                    <p>Access healthcare services and information round the clock</p>
+                    <p>Access healthcare services and information round the clock.</p>
                 </div>
                 <div class="feature-card">
                     <i class="fas fa-shield-alt"></i>
                     <h3>Secure Platform</h3>
-                    <p>Your health information is protected with advanced security</p>
+                    <p>Your health information is protected with advanced security.</p>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-handshake"></i>
-                    <h3>Trusted Partners</h3>
-                    <p>Connect with verified healthcare providers and facilities</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="emergency-section">
-            <div class="emergency-content">
-                <h2>Need Emergency Assistance?</h2>
-                <p>Our emergency support team is available 24/7 to help you</p>
-                <a href="tel:911" class="emergency-btn">
-                    <i class="fas fa-phone-alt"></i> Call Emergency Services
-                </a>
             </div>
         </section>
     </main>
@@ -394,27 +555,27 @@
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="Home.html">Home</a></li>
-                        <li><a href="Find Healthcare.html">Find Healthcare</a></li>
-                        <li><a href="Self-Care Resources.html">Self-Care Resources</a></li>
-                        <li><a href="Doctor.html">Consult Doctor</a></li>
-                        <li><a href="About us.html">About Us</a></li>
-                        <li><a href="Contact us.html">Contact Us</a></li>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="Doctor.html"><i class="fas fa-user-md"></i> Nature Nest</a></li>
+                        <li><a href="Self-Care Resources.html"><i class="fas fa-heart"></i> Self-Care Resources</a></li>
+                        <li><a href="Find Healthcare.html"><i class="fas fa-search"></i> Find Healthcare</a></li>
+                        <li><a href="About us.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li><a href="Contact us.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Contact Info</h3>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Healthcare Ave, Medical City</li>
-                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
-                        <li><i class="fas fa-envelope"></i> info@healthconnect.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Healthcare Ave, Ahmedabad City</li>
+                        <li><i class="fas fa-phone"></i> +91 234 567 890</li>
+                        <li><i class="fas fa-envelope"></i> healthconnect.dev</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="footer-logo">
                     <img src="images/logo.png" alt="HealthConnect Logo">
-                    <p>&copy; 2024 HealthConnect. All rights reserved.</p>
+                    <p>&copy; 2025 HealthConnect. All rights reserved.</p>
                 </div>
                 <div class="footer-links">
                     <a href="#">Terms & Conditions</a>
@@ -435,7 +596,7 @@
         // Mobile Navigation Toggle
         const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
         const navbar = document.querySelector('.navbar');
-        
+
         mobileNavToggle.addEventListener('click', () => {
             navbar.classList.toggle('active');
         });
@@ -449,7 +610,7 @@
 
         // Scroll to Top Button
         const scrollTopBtn = document.querySelector('.scroll-top');
-        
+
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 scrollTopBtn.classList.add('visible');
@@ -465,7 +626,6 @@
             });
         });
     </script>
-   
 </body>
 
 </html>
